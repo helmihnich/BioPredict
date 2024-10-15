@@ -52,15 +52,18 @@ export default function SimpleCard() {
                 <Checkbox>Remember me</Checkbox>
                 <Link color={"blue.400"}>Forgot password?</Link>
               </Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                Sign in
-              </Button>
+              <Link href="/home" style={{ textDecoration: 'none' }}>
+                <Button
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  w={"100%"}
+                >
+                  Sign in
+                </Button>
+              </Link>
             </Stack>
           </Stack>
         </Box>
