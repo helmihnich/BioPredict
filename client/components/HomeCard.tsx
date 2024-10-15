@@ -10,10 +10,22 @@ import {
   Icon,
   Text,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
 import Image from "next/image";
+import React, { useEffect, useState } from "react"
 
 export default function HomeCard() {
+
+  const [ message, setMessage ] = useState("Loading")
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/home").then(
+      response => 
+        response.json()
+    ).then(
+      data => {
+      setMessage(data.message)
+    })
+  }, []);
   return (
     <Flex
       minH={"100vh"}
