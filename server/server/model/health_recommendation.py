@@ -52,6 +52,8 @@ if __name__ == "__main__":
     - Athletes
     - Pregnant Women
     - Children
+
+    Predict if theres's any comming disease:
     """
 
     # Call the function and print the recommendations

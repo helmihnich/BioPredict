@@ -16,7 +16,7 @@ MODEL_PATHS = {
     "interaction": "./xgb_model_with_interactions.pkl"
 }
 
-city, country = "Tunis", "TN"
+city, country = "Delhi", "IN"
 
 def load_models():
     """Load machine learning models from specified paths."""
