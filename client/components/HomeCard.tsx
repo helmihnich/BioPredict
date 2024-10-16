@@ -1,27 +1,24 @@
+import React, { useState } from "react";
 import {
   Box,
-  FormControl,
-  Input,
-  Button,
-  InputGroup,
-  InputLeftElement,
   Text,
   Center,
   VStack,
 } from "@chakra-ui/react";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { mockCities, City } from './mockCities'; // Ensure this import is correct
+import SearchInput from './searchInput'; // Import the new component
 
 export default function HomeCard() {
-  const [message, setMessage] = useState("Loading");
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/api/home")
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
-      });
-  }, []);
+  const handleSelectCity = (city: City) => {
+    setSelectedCity(city);
+    sendCityToBackend(city);
+  };
+
+  const sendCityToBackend = (city: City) => {
+    console.log("Sending to backend:", city);
+  };
 
   return (
     <VStack spacing={6} minH={"100vh"} pt={10} align="center">
@@ -42,39 +39,9 @@ export default function HomeCard() {
         >
           Forecast your well being
         </Text>
-        {/* Search Input with Icon */}
-        <FormControl id="search" mb={4} bgColor={"white"} rounded={"full"}>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents="none"
-              ml={20}
-              justifySelf="center"
-              mt={2}
-              children={
-                <Button as="a" href="/" variant={"link"}>
-                  <Image
-                    src="/search (1).png"
-                    alt="Search"
-                    width={30}
-                    height={30}
-                  />
-                </Button>
-              }
-            />
-            <Input
-              type="text"
-              placeholder="Search about a city"
-              size="lg"
-              _placeholder={{ color: "gray.500" }}
-              height="60px"
-              fontSize="xl"
-              w={"100%"}
-              pl={40}
-              bgColor={"white"}
-              rounded={"full"}
-            />
-          </InputGroup>
-        </FormControl>
+
+        {/* Use the SearchInput Component */}
+        <SearchInput mockCities={mockCities} onSelectCity={handleSelectCity} />
 
         {/* Centered Bottom Text */}
         <Center>
@@ -94,27 +61,21 @@ export default function HomeCard() {
       </Box>
 
       {/* Second Box */}
-      <Box
-        textAlign={"center"}
-        p={6}
-        maxW={"100%"}
-        w={"100%"}
-      >
+      <Box textAlign={"center"} p={6} maxW={"100%"} w={"100%"}>
         <Text
-          fontSize={"2xl"}  // Main text size
+          fontSize={"2xl"}
           color={"black"}
           fontWeight={"bold"}
-          mb={2}  // Small margin at the bottom
+          mb={2}
         >
           Air Quality Index By City
         </Text>
 
-        {/* Smaller Text Below Main Text */}
         <Text
-          fontSize={"md"}  // Smaller text size
+          fontSize={"md"}
           color={"gray.500"}
-          maxW={"70%"}  // Limit the width for better readability
-          mx={"auto"}  // Center the text horizontally
+          maxW={"70%"}
+          mx={"auto"}
         >
           Explore real-time and forecast street-level air quality information around the world.
         </Text>
