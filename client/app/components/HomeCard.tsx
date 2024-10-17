@@ -23,42 +23,12 @@ export default function HomeCard() {
   return (
     <VStack spacing={6} minH={"100vh"} pt={10} align="center">
       {/* First Box */}
-      <Box
-        maxW={"100%"}
-        w={"100%"}
-        p={6}
-        boxShadow={"lg"}
-        bgGradient="linear(to-r, #117577, #25AEB1)"
-      >
-        <Text
-          fontSize={"4xl"}
-          textAlign={"center"}
-          color={"#FFFFFF"}
-          fontWeight={"bold"}
-          mb={4}
-        >
-          Forecast your well being
-        </Text>
+      
 
         {/* Use the SearchInput Component */}
         <SearchInput mockCities={mockCities} onSelectCity={handleSelectCity} />
 
-        {/* Centered Bottom Text */}
-        <Center>
-          <Text
-            fontSize={"inherit"}
-            w={"50%"}
-            textAlign={"center"}
-            color={"#FFFFFF"}
-            fontWeight={"bold"}
-            mt={8}
-          >
-            Street-level Air Quality, Pollen & Wildfire intelligence means we
-            can all make healthier choices to protect ourselves and our loved
-            ones.
-          </Text>
-        </Center>
-      </Box>
+        
 
       {/* Second Box */}
       <Box textAlign={"center"} p={6} maxW={"100%"} w={"100%"}>

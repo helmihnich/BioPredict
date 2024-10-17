@@ -1,5 +1,5 @@
 "use client"
-import HomeCard from "@/components/HomeCard"
+import HomeCard from "@/app/components/HomeCard"
 
 
 export default function HomePage() {

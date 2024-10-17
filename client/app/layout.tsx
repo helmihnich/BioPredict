@@ -1,8 +1,8 @@
 "use client"
 import { ChakraProvider } from "@chakra-ui/react"
 
-import WithSubnavigation from "@/components/Navbar"
-import SmallWithSocial from "@/components/Footer"
+import WithSubnavigation from "@/app/components/Navbar"
+import SmallWithSocial from "@/app/components/Footer"
 
 export default function RootLayout({
   children,
