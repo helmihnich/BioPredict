@@ -2,6 +2,8 @@
 
 BioPredict is a web application designed to predict the health impacts of climate change on vulnerable populations, such as elderly individuals, pregnant women, children, and those with lung problems. Using real-time climatic data, BioPredict provides personalized health recommendations based on air quality and weather conditions for specific locations.
 
+![Screenshot from 2024-10-17 17-04-28](https://github.com/user-attachments/assets/a9e10920-0cec-49d0-8e84-8c92cdc2e219)
+
 ## Table of Contents
 - [Features](#features)
 - [Architecture](#architecture)
@@ -20,6 +22,8 @@ BioPredict is a web application designed to predict the health impacts of climat
 - Backend prediction model trained with Kaggle datasets on air quality, weather, and health impacts.
 
 ## Architecture
+
+![Biopredict (4)](https://github.com/user-attachments/assets/e5c7ae50-3ccf-4828-8b30-b605c66365e9)
 
 The application is divided into two main parts:
 1. **Client**: Frontend built with Next.js, using Chakra UI for design and UI components.
