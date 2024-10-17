@@ -51,11 +51,14 @@ def prepare_input(aqi_data):
         print(f"KeyError in preparing input: {e}")
         return None
 
+
+
 def get_processed_data(city, country):
     """Main function to extract and process data for predictions."""
-    aqi_data = extract_data(city, country)
+    aqi_data, time_info = extract_data(city, country)
     if aqi_data:
-        return prepare_input(aqi_data)
+        processed_input = prepare_input(aqi_data)
+        return processed_input
     else:
         return None
 

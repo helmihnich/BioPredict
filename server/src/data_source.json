@@ -1,0 +1,18 @@
+{
+    "data": {
+
+        "aqi": "50",
+        "city": "Tunis",
+        "country": "Tunisia",
+        "humidity": "45%",
+        "no2": "10",
+        "o3": "20",
+        "pm10": "30",
+        "pm25": "25",
+        "so2": "5",
+        "temperature": "25C",
+        "time": "2024-10-17T10:20:36.000Z",
+        "wind": "10 km/h"
+    }
+  }
+  

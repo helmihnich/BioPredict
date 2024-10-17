@@ -1,3 +1,4 @@
+        
 def display_results(aqi_data, prediction_cardio, prediction_admit, time, city):
     """
     Generate a formatted air quality report.
@@ -12,6 +13,9 @@ def display_results(aqi_data, prediction_cardio, prediction_admit, time, city):
     Returns:
         str: Formatted air quality report as a string.
     """
+
+
+
     report = (
         f"\n--- Air Quality Report for {city} ---\n"
         f"Air Quality Index (AQI): {aqi_data['aqi']}\n"
