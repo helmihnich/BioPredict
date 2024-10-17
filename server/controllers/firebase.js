@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 const { initializeApp } = require("firebase/app");
 const dotenv = require('dotenv');  // Load environment variables
-const {getFirestore, doc, setDoc} = require("firebase/firestore");
+const {getFirestore, doc, setDoc, Firestore, Timestamp} = require("firebase/firestore");
+
 
 dotenv.config();  // Initialize dotenv to read from .env file
 
@@ -45,11 +46,32 @@ const getFirebaseApp = () => {
     return app;  // Return the app instance (or undefined if not initialized)
 };
 
-const uploadProcessedData = async () => {
+const uploadProcessedData = async (data) => {
+    console.log('Uploading data to Firestore:', data);
     const dataToUpload = {
-        
-    }
-}
+        'aqi': data.aqi,
+        'city': data.city,
+        'country': data.country,
+        'humidity': data.humidity,
+        'no2': data.no2,
+        'o3': data.o3,
+        'pm10': data.pm10,
+        'pm25': data.pm25,
+        'so2': data.so2,
+        'temperature': data.temperature,
+        'wind': data.wind,
+        'prediction_cardio': data.prediction_cardio,
+        'prediction_admit': data.prediction_admit,
+    };
 
+    try {
+        const documentRef = doc(db, "biopredict", "xJLnKLH9ROac9CK91mFZ"); // Ensure Firestore reference is correct
+        await setDoc(documentRef, dataToUpload);
+        console.log('Data uploaded to Firestore successfully');
+    } catch (error) {
+        console.error('Error uploading data:', error);
+        throw error; // Rethrow error for handling in the calling function
+    }
+};
 // Export the functions for use in other modules
-module.exports = { initializeFirebaseApp, getFirebaseApp };
+module.exports = { initializeFirebaseApp, getFirebaseApp, uploadProcessedData };
