@@ -60,6 +60,24 @@ app.post('/weather_data', async (req, res) => {
     }
 });
 
+app.post("/search", (req, res) => {
+    const { city, country } = req.body; // Extract city and country from the request body
+  
+    if (!city || !country) {
+      return res.status(400).json({ error: "City and country are required" });
+    }
+  
+    // Handle the received data (you can process it, query a database, etc.)
+    console.log(`Received City: ${city}, Country: ${country}`);
+  
+    // Send a response back to the client
+    res.status(200).json({
+      message: "Data received successfully",
+      city: city,
+      country: country,
+    });
+  });
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

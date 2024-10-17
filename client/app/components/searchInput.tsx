@@ -3,9 +3,9 @@ import {
   FormControl,
   Input,
   InputGroup,
-    Box,
-    Text,
-    Center,
+  Box,
+  Text,
+  Center,
   InputLeftElement,
   List,
   ListItem,
@@ -49,29 +49,51 @@ const SearchInput: React.FC<SearchInputProps> = ({ mockCities, onSelectCity }) =
     }
   }, [debouncedSearchTerm]);
 
+  // Function to send the city and country to the backend
+  const sendCityAndCountry = async (city: string, country: string) => {
+    try {
+      const response = await fetch("http://localhost:4000/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ city, country }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send data to server");
+      }
+
+      const data = await response.json();
+      console.log("Response from server:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   // Detect "Enter" key press to trigger search
-const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const [inputCity, inputCountry] = searchTerm.split(',').map(part => part.trim().toLowerCase());
-  
+
       // Find a valid city-country pair in the mockCities
       const validCity = mockCities.find(
         (city) =>
           city.city.toLowerCase() === inputCity && 
           city.country.toLowerCase() === inputCountry
       );
-  
+
       if (validCity) {
+        // Send the city and country to the backend
+        sendCityAndCountry(validCity.city, validCity.country);
+
         // Redirect to the dynamic search page
-        // window.location.href = `/search/${validCity.city.toLowerCase()},${validCity.country.toLowerCase()}`;
         window.location.href = `/search/${validCity.city.toLowerCase()},${validCity.country.toLowerCase()}`;
       } else {
         alert("Invalid city or country, please select from the list.");
       }
     }
   };
-  
-  
 
   if (!isMounted) {
     return null; // Ensure nothing renders server-side before mounting
@@ -79,91 +101,91 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 
   return (
     <Box
-        maxW={"100%"}
-        w={"100%"}
-        p={6}
-        boxShadow={"lg"}
-        bgGradient="linear(to-r, #117577, #25AEB1)"
+      maxW={"100%"}
+      w={"100%"}
+      p={6}
+      boxShadow={"lg"}
+      bgGradient="linear(to-r, #117577, #25AEB1)"
+    >
+      <Text
+        fontSize={"4xl"}
+        textAlign={"center"}
+        color={"#FFFFFF"}
+        fontWeight={"bold"}
+        mb={4}
       >
+        Forecast your well being
+      </Text>
+      <FormControl id="search" mb={4} bgColor={"white"} rounded={"full"}>
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            ml={20}
+            justifySelf="center"
+            mt={2}
+            children={
+              <Image
+                src="/search (1).png"
+                alt="Search"
+                width={30}
+                height={30}
+              />
+            }
+          />
+          <Input
+            type="text"
+            placeholder="Search for a city"
+            size="lg"
+            _placeholder={{ color: "gray.500" }}
+            height="60px"
+            fontSize="xl"
+            w={"100%"}
+            pl={40}
+            bgColor={"white"}
+            rounded={"full"}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown} // Trigger search on Enter key
+          />
+        </InputGroup>
+        {/* Suggestions List */}
+        {suggestions.length > 0 && (
+          <List bg="white" borderRadius="md" shadow="md">
+            {suggestions.map((suggestion, index) => (
+              <ListItem
+                key={index}
+                p={2}
+                ml={50}
+                _hover={{ bg: "gray.100" }}
+                cursor="pointer"
+                onClick={() => {
+                  onSelectCity(suggestion);
+                  setSearchTerm(`${suggestion.city}, ${suggestion.country}`);
+                  setSuggestions([]);
+                }}
+              >
+                {suggestion.city}, {suggestion.country}
+              </ListItem>
+            ))}
+          </List>
+        )}
+      </FormControl>
+      {/* Centered Bottom Text */}
+      <Center>
         <Text
-          fontSize={"4xl"}
+          fontSize={"inherit"}
+          w={"50%"}
           textAlign={"center"}
           color={"#FFFFFF"}
           fontWeight={"bold"}
-          mb={4}
+          mt={8}
         >
-          Forecast your well being
+          Street-level Air Quality, Pollen & Wildfire intelligence means we
+          can all make healthier choices to protect ourselves and our loved
+          ones.
         </Text>
-            <FormControl id="search" mb={4} bgColor={"white"} rounded={"full"}>
-            <InputGroup>
-                <InputLeftElement
-                pointerEvents="none"
-                ml={20}
-                justifySelf="center"
-                mt={2}
-                children={
-                    <Image
-                    src="/search (1).png"
-                    alt="Search"
-                    width={30}
-                    height={30}
-                    />
-                }
-                />
-                <Input
-                type="text"
-                placeholder="Search for a city"
-                size="lg"
-                _placeholder={{ color: "gray.500" }}
-                height="60px"
-                fontSize="xl"
-                w={"100%"}
-                pl={40}
-                bgColor={"white"}
-                rounded={"full"}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyDown={handleKeyDown} // Trigger search on Enter key
-                />
-            </InputGroup>
-            {/* Suggestions List */}
-            {suggestions.length > 0 && (
-                <List bg="white" borderRadius="md" shadow="md">
-                {suggestions.map((suggestion, index) => (
-                    <ListItem
-                    key={index}
-                    p={2}
-                    ml={50}
-                    _hover={{ bg: "gray.100" }}
-                    cursor="pointer"
-                    onClick={() => {
-                        onSelectCity(suggestion);
-                        setSearchTerm(`${suggestion.city}, ${suggestion.country}`);
-                        setSuggestions([]);
-                    }}
-                    >
-                    {suggestion.city}, {suggestion.country}
-                    </ListItem>
-                ))}
-                </List>
-            )}
-            </FormControl>
-        {/* Centered Bottom Text */}
-        <Center>
-          <Text
-            fontSize={"inherit"}
-            w={"50%"}
-            textAlign={"center"}
-            color={"#FFFFFF"}
-            fontWeight={"bold"}
-            mt={8}
-          >
-            Street-level Air Quality, Pollen & Wildfire intelligence means we
-            can all make healthier choices to protect ourselves and our loved
-            ones.
-          </Text>
-        </Center>
-      </Box>
+      </Center>
+    </Box>
   );
 };
 

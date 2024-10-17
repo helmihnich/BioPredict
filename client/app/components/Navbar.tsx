@@ -281,18 +281,18 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: "Blog",
         subLabel: "Meet the team and learn about our mission",
-        href: "#",
+        href: "/blog",
       },
       {
         label: "Pricing",
         subLabel: "See our pricing and pick the best plan",
-        href: "#",
+        href: "/pricing",
       },
     ],
   },
   {
     label: "Contact",
-    href: "#",
+    href: "/contact",
   },
   
 ]

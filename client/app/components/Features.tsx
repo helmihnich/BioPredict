@@ -54,10 +54,9 @@ export default function SplitWithImage() {
           >
             Our Story
           </Text>
-          <Heading>A digital Product design agency</Heading>
+          <Heading>BioPredict</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore
+          Our platform harnesses real-time climate data—like air quality and temperature trends—alongside health insights to identify patterns and forecast potential disease outbreaks
           </Text>
           <Stack
             spacing={4}
@@ -72,19 +71,19 @@ export default function SplitWithImage() {
                 <Icon as={IoAnalyticsSharp} color={"yellow.500"} w={5} h={5} />
               }
               iconBg={useColorModeValue("yellow.100", "yellow.900")}
-              text={"Business Planning"}
+              text={"Early alerts can help reduce emergency room visits by 20-40%, particularly during high-risk climate events.” "}
             />
             <Feature
               icon={<Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />}
               iconBg={useColorModeValue("green.100", "green.900")}
-              text={"Financial Planning"}
+              text={"Market Growth: Expected to rise from $8.45 trillion in 2020 to $10.57 trillion by 2024."}
             />
             <Feature
               icon={
                 <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
               }
               iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Market Analysis"}
+              text={"By integrating cutting-edge biomedical analysis with weather models, BioPredict doesn’t just forecast the weather; it forecasts health risks, helping reduce hospitalizations and even save lives."}
             />
           </Stack>
         </Stack>
@@ -93,7 +92,7 @@ export default function SplitWithImage() {
             rounded={"md"}
             alt={"feature image"}
             src={
-              "https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              "/heatmap.png"
             }
             objectFit={"cover"}
           />
