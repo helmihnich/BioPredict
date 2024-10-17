@@ -64,19 +64,30 @@ Frontend (Next.js) ---> Backend (Node.js) ---> Python Model ---> OpenWeatherMap 
 
 Next.js: React-based framework for server-side rendering.
 Chakra UI: Component library for UI design.
-Backend
-Node.js: Server handling client requests, API calls, and database interactions.
-Python: Prediction model built with machine learning.
-Firebase: NoSQL database to store data.
-APIs
-OpenWeatherMap:
-Geolocation API: Retrieve geographic coordinates of the city.
-Air Quality API: Get air quality data for a given city.
-Weather API: Get current weather conditions.
-Data Source
-Kaggle Datasets: Air quality, weather, and health impact data used to train the machine learning model.
-Installation
-Prerequisites
+
+### Backend
+*Node.js*: Server handling client requests, API calls, and database interactions.
+*Python*: Prediction model built with machine learning.
+*Firebase*: NoSQL database to store data.
+*Postgree*: NoSQL database to store data.
+
+### APIs
+
+*OpenWeatherMap*:
+
+*Geolocation API*: Retrieve geographic coordinates of the city.
+*Air Quality API*: Get air quality data for a given city.
+*Weather API*: Get current weather conditions.
+
+### Data Source
+
+*Kaggle Datasets*: Air quality, weather, and health impact data used to train the machine learning model.
+link: 'https://l.messenger.com/l.php?u=https%3A%2F%2Fwww.kaggle.com%2Fdatasets%2Frabieelkharoua%2Fair-quality-and-health-impact-dataset%3Fresource%3Ddownload&h=AT0Hg1CI1QDShL9X-WdybnF_fOMo45tusdooM_Pa8FHJefhxGeOxM55wd8WxITUD5-bWM8_BFDXVtBtSm0uji-h3-tA-UvBY8qdhUPCqsyIu6NLMQJi43y7LvKKptA'
+
+# Installation
+
+## Prerequisites
+
 Node.js installed.
 Python installed.
 Firebase account and project setup.
@@ -91,62 +102,63 @@ Install client dependencies:
 
 
 
-cd client
+`cd client
 npm install
-Install server dependencies:
+`
+## Install server dependencies:
 
-bash
-Copy code
-cd ../server
-npm install
-Set up the Python environment for the prediction model:
+`cd ../server
+npm install`
 
-bash
-Copy code
-pip install -r requirements.txt
+## Set up the Python environment for the prediction model:
+
+`pip install -r requirements.txt`
+
 Create a .env file in the server folder to store API keys and Firebase credentials.
 
-Start the application:
+# Start the application:
 
-Client (Next.js frontend):
+## Client (Next.js frontend):
 
-bash
-Copy code
+`
 cd client
 npm run dev
-Server (Node.js backend):
+`
 
-bash
-Copy code
-cd server
-npm start
-Python Model:
+## Server (Node.js backend):
 
-bash
-Copy code
-cd python_model
-python main.py
-Usage
-Open your browser and go to http://localhost:3000.
+`cd server
+npm start`
+
+## Python Model:
+
+`
+cd biopredict/server/model
+python index.py
+`
+
+### Usage
+
+Open your browser and write `localhost:3000/home`
+
 Search for a city to view health impact predictions and recommendations.
-API Endpoints
-Frontend to Backend
-GET /city_data: Sends city search request to the Node.js server.
-Backend to Python
+
+## API Endpoints
+
+### Frontend to Backend
+
+Post /city_data: Sends city search request to the Node.js server.
+Post Backend to Python
 POST /weather_data: Node.js server sends weather data to Python for prediction.
-External APIs
+
+### External APIs
+
 OpenWeatherMap APIs: Used for retrieving weather, air quality, and geolocation data.
 Contributing
 Contributions are welcome! Please fork the repository and create a pull request.
 
 License
 This project is licensed under the MIT License.
-
-go
-Copy code
-
-This markdown version is ready for use in your project’s `README.md` file. You can copy and paste it directly!
-
 
 
 
